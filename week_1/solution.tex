@@ -1,0 +1,32 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumerate}
+\author{Michele De Vita}
+\title{Solutions of week 1}
+\begin{document}
+	\section*{Exercise 1:}\\
+	\begin{enumerate}[a)]
+		\item 392.36
+		\item -23.28
+		\item $ SE = \sqrt{Var(\hat{\beta})} = \sqrt{\dfrac{\hat{\sigma}^2}{SSX}} = \dfrac{11.5}{\sqrt{27.07766}} =  2.21$ \\\\
+		Confidence interval: $ [-10.15, -1.49] $
+		\item $ H_0: \hat{\beta} = 0 $ $ t = \dfrac{\hat{\beta}}{SE} = \dfrac{-5.82}{2.21} = -2.63 $ \\\\
+		$ p-value = P(X \leq -2.63 | H_0) + P(X \geq 2.63 | H_0)  = 2 * 0.043 = 0.086$\\\\
+		We reject both $ 5\% \text{ and } 1\% $
+		\item $ TS = 520.4- 5.82 * 21.4 = 395.852$
+		\item The unit measure of the slope is Test Score over Class Size. This mean that for each new student in mean we have a decrease of the test score of 5.82
+	\end{enumerate}
+	\section*{Exercise 2:}
+	\begin{enumerate}[a)]
+		\item $ -99.41 +3.94 \cdot 70 = 176.39 | -99.41 +3.94 \cdot 74 = 192.15$
+		\item $ (-99.41 +3.94 \cdot (x^* + 1.5))  - (-99.41 +3.94 \cdot x^*) = 3.94\cdot 1.5 = 5.91$
+		\item $ SE = 0.31 \,\, - \,\,IC = \hat{\beta} \pm Z_{0.005} \cdot SE = 5.91 \pm  2.58 \cdot 0.31 = [5.1102, 6.7098] $
+		\item $ 1 \,\, pound \rightarrow 0.45 \,\, kg  $, $ 1 \,\, inch \rightarrow 2.54 \,\, cm $ \\\\ $ weight = -99.41 \cdot 0.45 + 3.94 \cdot \dfrac{0.45}{2.54}\cdot height = -44.7345 + 0.7 \cdot height$\\
+		intercept = -44.7345 \\ slope = 0.7 \\ $ \hat{\sigma} = 10.2 \cdot 0.45 = 4.59$ \\  SE = $ 0.31 \cdot \dfrac{0.45}{2.54} = 0.055  $ \\$ R^2 = 0.81 $
+		\item The unit measure of slope is weight (pound) over height (inch). This mean that for each increment by 1 of the height we have an increment of weight by 3.94
+	\end{enumerate}
+\end{document}
