@@ -1,0 +1,63 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[\shortlabels]{enumerate}
+\begin{document}
+	\author{Michele De Vita}
+	\title{Solution of week 2}
+	\maketitle
+	\noindent
+	\begin{enumerate}
+		\item \textit{drop if !inlist(schoolid, 1224, 1288, 1296, 1308, 1317)} \\
+		\textit{keep mathach minority schoolid ses}
+		\item \begin{itemize}
+			\item cmd for continuos variables: \textit{tabstat  ses mathach, stat(mean sd)} \\
+			\item cmd for categorical: \textit{table minority}
+			\item continuos vears by schoolid: \textit{tabstat ses mathach, stat(mean sd) by(schoolid)}
+
+		\end{itemize}
+			\item \textit{histogram mathach} \\
+			\textit{graph box mathach}
+			\item \textit{scatter mathach ses \\
+				twoway scatter mathach ses, by(schoolid)
+			}
+		\item \textit{regress mathach ses}\\
+		Parameters interpretation:\\
+
+		$ b) $ With intercept  equal to 11.45652 we can say that if we have $ ses = 0 $ we have a math achievement equal to 11.45652\\
+		The coefficient $ \beta_1 $ before $ ses $ say that if we increment ses (socio economic status) by one we have an increment of mathach by 3.306963\\
+		The residual $ \epsilon_i  ~ N(0, \sigma^2)$ with $ \sigma = 6.4708 \text{ and } \sigma^2=41.8712$ tell us about the average deviation from the regression line.\\ \\
+		$ c) $ Since the p-value is less that $ 0.05 $ we reject the null hypothesis $ H_0 = \beta_2 = 0 $ 
+
+	\item \textit{predict yhat}
+	
+	\item \textit{twoway (scatter mathach ses) (lfit yhat ses) \\
+		twoway (scatter mathach ses) (lfit yhat ses), by(schoolid) \\
+		twoway (scatter mathach ses) (lfit yhat ses) (lfit mathach ses), by(schoolid)
+	} \\
+	Comment about differences between  mean mathach, ses and yhat, ses:
+	For the school 1224 and 1288 the lines respectively $ \hat{y} \text{ and } $ are very similar, while the other three are a little bit different
+	\item 
+	\begin{enumerate}[a)]
+		\item \textit{tabulate schoolid, generate($ schoolid\_ $)}
+		\item \textit{regress mathach schoolid$\_$2 schoolid$\_$3 schoolid$\_$4 schoolid$\_$5}
+		The coefficient before the schoolids dummy variables say the differences between the school with $ schoolid = 1224 $ and the others. The coefficients say that:
+		\begin{itemize}
+			\item $ \beta_1 =  3.795353  $ say that the school with $ schoolid = 1228  $ has an average mathach superior by 3.795353 from the school with $ schoolid = 1224 $.
+			\item $ \beta_2 =  -2.079489  $ say that  the school with $ schoolid =  1296 $ has a mean mathach lower by 2.079489 respect to school with $ schoolid = 1224 $
+			\item .. and so on with the other two coefficient and respectively the other two id of the schools
+		\end{itemize}
+		\item \textit{testparm schoolid$\_* $} We reject the null hypothesis of all dummy variables are 0 because the p-value is 0.0015, so less than 0.025
+	\end{enumerate}
+	\item \textit{regress mathach c.ses$ \#\# $i.schoolid$ \_* $}
+	\end{enumerate}
+
+
+	
+
+	
+
+\end{document}
