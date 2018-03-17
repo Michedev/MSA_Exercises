@@ -18,7 +18,23 @@ predict ln_y_age_2
 predict res_ln_y_age_2, res
 
 //8
-quietly line ln_y_age age if female == 0 & bachelor == 0,  saving(ln_y_age, replace) sort title("ln_ahe age")
-quietly line ln_y_ln_age age if female == 0 & bachelor == 0, saving(ln_y_ln_age, replace) sort title("ln_ahe ln_age")
-quietly line ln_y_age_2 age if female == 0 & bachelor == 0, saving(ln_y_age_2, replace) sort title("ln_ahe age age^2")
-graph combine ln_y_age.gph ln_y_ln_age.gph ln_y_age_2.gph
+quietly line ln_y_age age if female == 0 & bachelor == 0,  saving(ln_y_age, replace) sort title("ln_ahe age male high school")
+quietly line ln_y_ln_age age if female == 0 & bachelor == 0, saving(ln_y_ln_age, replace) sort title("ln_ahe ln_age male high school")
+quietly line ln_y_age_2 age if female == 0 & bachelor == 0, saving(ln_y_age_2, replace) sort title("ln_ahe age age^2 male high school")
+
+quietly line ln_y_age age if female == 1 & bachelor == 1,  saving(ln_y_age_f, replace) sort title("ln_ahe age female bachelor")
+quietly line ln_y_ln_age age if female == 1 & bachelor == 1, saving(ln_y_ln_age_f, replace) sort title("ln_ahe ln_age female bachelor")
+quietly line ln_y_age_2 age if female == 1 & bachelor == 1, saving(ln_y_age_2_f, replace) sort title("ln_ahe age age^2 female bachelor")
+
+graph combine ln_y_age.gph ln_y_ln_age.gph ln_y_age_2.gph ln_y_age_f.gph ln_y_ln_age_f.gph ln_y_age_2_f.gph
+//9
+regress ln_ahe c.age##c.age i.female i.bachelor i.female##i.bachelor
+
+//10
+summ(age)
+return list
+gen age_center = age - r(mean)
+regress ln_ahe c.age_center i.female c.age_center#i.female
+
+//11
+regress ln_ahe c.age_center i.bachelor c.age_center#i.bachelor
