@@ -28,5 +28,16 @@
 	Bob has a $ \ln(AHE) = 2.77 $ and $ AHE = 15.95 $ while Jim has a $ \ln(AHE) = 2.421 $ and a $ AHE = 11.26 $. The difference between the two female is $ 2.77 - 2.421 = 0.349 $ that is exactly the bachelor coefficient but without the interaction because $ female = 0 $
 	\item First we centre the age values. Then making a regression with the $ age\_center, female $ and the interaction between the last two, we obtain a coefficient equal to $ -0.0070067 $ and a p-value of $  0.124 $,  so there isn't statistical significance for this value then we can't use this value for regression. In conclusion we can say that there isn't a difference on earning between male and female in relation to age
 	\item We used the age centred in the mean calculated in the latter exercise. In this case the regression use the variables  $ age\_center, bachelor $ and the interaction between the last two. The coefficient of the interaction is equal to $ 0.00469 $ with a $ p-value = 0.272 $, so also in this case we haven't enough statistical significance to use this value, then we can't assert that there is an effect between $ age $ and $ bachelor $ variables in relation to earning
+	\item First, it is created a dummy variable $ young $ that has value 1 if the age of the worker is less or equal to 28, else 0. Then with a log-linear regression on $ ahe $ with variables $ age, young $. The results are:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{hist_ahe_young}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{regression_young}
+	\end{figure}
+	We can clearly see that the coefficient of $ young $ variable is negative, so it mean that if a worker is young, it has a decrease by $ 10\% $ of $ AHE $
 	\end{enumerate}
 \end{document}

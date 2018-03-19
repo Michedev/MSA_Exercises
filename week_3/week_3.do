@@ -38,3 +38,9 @@ regress ln_ahe c.age_center i.female c.age_center#i.female
 
 //11
 regress ln_ahe c.age_center i.bachelor c.age_center#i.bachelor
+
+//12
+histogram age
+gen young = age <= 28
+histogram ahe , by(young)
+regress ln_ahe young female bachelor

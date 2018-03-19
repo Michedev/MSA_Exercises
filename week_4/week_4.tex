@@ -1,0 +1,55 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\begin{document}
+	\author{Michele De Vita}
+	\title{Exercises Week 4}
+	\maketitle
+	\begin{enumerate}
+		\item The advantage of OLS to absolute deviation is the derivability because the second is not derivable in some points
+		\item \textit{Normal equation}: $ \mathbf{X}' \mathbf{X} \hat{\beta} = \mathbf{X}'y $. \\\textit{OLS } estimation: $ \hat{\beta} = (\mathbf{X}' \mathbf{X})^{-1} \mathbf{X}' y $\\
+		The solution is unique since $ \mathbf{X} $ is definite positive , linearly independent (\textit{rk($ \mathbf{X} $) = $ \#rows $}) then invertible.\\
+		If $ \mathbf{X} $ is not linearly independent we can't calculate the term $ (\mathbf{X}' \mathbf{X})^{-1} $
+		\item \textit{MLE} require assuming a distribution of the error because to fit into non-linear data distributions. If the errors are distributed normally then \textit{MLE } converges to \textit{OLS}
+		\item $ H = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' $\\
+		Symmetric property:
+		\begin{align*}
+			&H = H' \\
+			&\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' = (\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}')' \\
+			&\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' = \mathbf{X}((\mathbf{X}'\mathbf{X})^{-1})'\mathbf{X}'\\
+			&\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' = \mathbf{X}((\mathbf{X}'\mathbf{X})')^{-1}\mathbf{X}'\\
+			&\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' 
+		\end{align*}
+		Idempotent:
+		\begin{align*}
+			& H \cdot H = \\
+			&\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' \cdot \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' = \\
+			& \mathbf{X}\underbrace{((\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' \mathbf{X})}_1(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}= \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' = H
+		\end{align*}
+		\item With MLE of a linear model we have a variance $ \sigma^2_{ML} = \dfrac{\hat{\varepsilon}'\hat{\varepsilon}}{n} $.\\
+		Since $ \E\left[ \hat{\varepsilon}'\hat{\varepsilon} \right] = (n-p) \cdot \sigma^2$ we have $ \E\left[ \sigma^2_{ML} \right] = \dfrac{n-p}{n} \cdot \sigma^2 $ which is a biased estimator. From $ \E\left[ \hat{\varepsilon}'\hat{\varepsilon} \right]  $ we can easily find an unbiased estimator $ \hat{\sigma} = \dfrac{1}{n-p} \mathbf{\varepsilon}' \varepsilon $
+		\item $ \mathbf{X'\varepsilon} = \mathbf{X'(I-H)y}  = \mathbf{X'y - X'Hy} =
+		 \mathbf{X'y - \underbrace{\mathbf{X}' \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}}_1\mathbf{X}' y}  = \mathbf{0} $. With the last result and assuming that the model has intercept we can assert that:
+		 $ \sum_i \mathbf{1 \hat{\varepsilon}_i} =   \sum_i \mathbf{\varepsilon_i} = 0 $
+		\item The coefficient of determination $ R^2 = \dfrac{s^2_{\hat{y}}}{s^2_y} = \dfrac{\sum_i (\hat{y}_i - \overline{y})^2}{\sum_i (y_i - \overline{y})^2} $ vary between $ \left[0,1\right] $ and explain the goodness of the fit of the regression. If $ R^2=1 $ we have a perfect fit while with $ R^2 = 0 $ we have $ \forall i \,\,\, \hat{y}_i = \overline{y}  $ so it means that every point $ \hat{y} $ is in the mean. $ R^2 = 0 $ doesn't necessarily mean that the response is unrelated with the variables because there could be a non-linear relationship
+		\item For model M2 we can say that $ R^2_{M2} \geq R^2_{M1} $. Instead for $ R^3_{M3}  $ we can't say anything except if the data are distributed logarithmically then $ R^2_{M3} \geq R^2_{M1} $
+		\item The three condition for compare model by $ R^2 $ are:
+		\begin{itemize}
+			\item Same response variable
+			\item Same number of parameters
+			\item Must include intercept
+		\end{itemize}
+		\item 
+		Zero mean:  $ \E\left[\varepsilon \right] = 0 $\\
+		Homoscedasticity: $ Cov\left( \varepsilon \right) = I \cdot \sigma^2 $\\
+		No correlation: $ Corr(x,y) = 0 $ \\
+		Normality: $ \varepsilon  $ ~ $ N(0, \sigma^2 I) $
+		\item 
+		$ \E \left[ \hat{\beta} \right] = \E \left[ (X'X)^{-1} X'  y \right] = (X'X)^{-1} X' \E \left[y\right] = (X'X)^{-1} X' X \beta = \beta $
+	\end{enumerate}
+\end{document}
