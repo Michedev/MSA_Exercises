@@ -47,9 +47,31 @@
 		\item 
 		Zero mean:  $ \E\left[\varepsilon \right] = 0 $\\
 		Homoscedasticity: $ Cov\left( \varepsilon \right) = I \cdot \sigma^2 $\\
-		No correlation: $ Corr(x,y) = 0 $ \\
+		No correlation: $ \varepsilon \cdot \mathbf{X} = 0 $ \\
 		Normality: $ \varepsilon  $ ~ $ N(0, \sigma^2 I) $
 		\item 
 		$ \E \left[ \hat{\beta} \right] = \E \left[ (X'X)^{-1} X'  y \right] = (X'X)^{-1} X' \E \left[y\right] = (X'X)^{-1} X' X \beta = \beta $
+		We must assume that $ \E \left[ \varepsilon \right] = 0$
+		\item 
+		\begin{align*}
+		 Cov(\hat{\beta}) &= Cov((X'X)^{-1}X'y)  \\
+		  &= (X'X)^{-1}X'Cov(y)((X'X)^{-1}X')' \\
+		  &= \sigma^2 (X'X)^{-1}\underbrace{X'X(X'X)^{-1} }_I \\ 
+		  &= \sigma^2 (X'X)^{-1}
+		\end{align*}
+		Assumptions: $ Cov(y) = \mathbf{I} \sigma^2, \,\, rk(X) = k+1$
+		\item An optimal prediction of y is $ \mathbf{x_0' \hat{\beta}} $.\\ A prediction is optimal if minimize the prediction error
+		\item If $ X \sim N $ then $(\mathbf{AX} + b) \sim N $ 
+		\item $ \dfrac{(\hat{\beta} - \beta)' (X'X) (\hat{\beta} - \beta)}{\sigma^2} \sim \chi^2_p $
+		\item A needed assumption is that $ \lim_{n \rightarrow \infty} \dfrac{1}{n} X'_n X_n = V : V  $ positive definite. \\
+		This condition is true when, for example, the vectors $ x_i $ are i.i.d. (independent and identically distributed)
+		\item 
+		$ \E \left[ \hat{\varepsilon} \right] = \E \left[ y \right] -  X (X' X )^{-1} X' \E \left[ y \right] =  X \beta -\underbrace{  X (X' X )^{-1} X'}_I  X \beta = 0 $
+		
+		$ Cov(\hat{\varepsilon}) = Cov((\mathbf{I - H}) \mathbf{y}) = \mathbf{(I - H)} \sigma^2 \mathbf{I (I - H)'} = \sigma^2 \mathbf{(I - H)}$
+		\item The residuals cannot be used to evaluate the homoscedasticity because they are not homoscedastic or uncorrelated. To solve this problem in practice, we use the standardization:
+		\begin{align*}
+			r_i = \dfrac{\hat{\varepsilon}_i}{\hat{\sigma} \sqrt{1 - h_{ii}}}
+		\end{align*}
 	\end{enumerate}
 \end{document}
