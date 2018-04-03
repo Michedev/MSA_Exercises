@@ -5,8 +5,11 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{listings}
 \author{Michele De Vita}
+\title{Exercises week 5}
 \begin{document}
+	\maketitle
 	\begin{enumerate}
 		\item  
 		\begin{align*}
@@ -65,9 +68,29 @@
 			$ BIC = n \log(\hat{\sigma}^2) + \log(n) (|M| + 1) $.\\
 			Since $ SPSE  $ is not observable the two latter indicators are used to evaluate the fit of the model.\\
 			The difference between $ AIC \text{ and } BIC $ is the term before $ (|M| + 1) $: in AIC is equal to 2 while in BIC is $ \log(n) $. This mean that BIC have a major penalty when the model complexity increase in big dataset.\\
-			For $ n = 100 $ we have for $ l = -300, |M| = 5 $ $ AIC = 612, \,\, BIC = 627.63 $ while with $ l = -290, |M| = 9 $ $ AIC = 600, BIC = 626.05 $.\\
-			For $ n = 200 $ we have the same $ AIC $ while $ BIC $ changes with parameters $ l = -300, |M| = 5 $  we have $ BIC = 631.79 $ and with  $ l = -290, |M| = 9 $ $ BIC = 632.98 $.
+			Next we can see the tables with the results:
+			\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline 
+				n = 100 & AIC & BIC \\ 
+				\hline 
+				$ l = -300, |M| = 5 $ & 612 & 627.63 \\ 
+				\hline 
+				$ l = -290, |M| = 9 $ & 600 & 626.05 \\ 
+				\hline 
+			\end{tabular} \\ \medskip
+			\begin{tabular}{|c|c|c|}
+				\hline 
+				n = 200 & AIC & BIC \\ 
+				\hline 
+				$ l = -300, |M| = 5 $ & 612 & 631.79 \\ 
+				\hline 
+				$ l = -290, |M| = 9 $ & 600 & 632.98 \\ 
+				\hline 
+			\end{tabular} \\
+		\end{center}
 			Between $ n = 100 $ and $ n = 200 $ we can note the phenomenon described before with BIC, because with $ n = 100 $ there is a decrement of BIC between the two configurations while for $ n = 200 $ the BIC increase between the two configurations
+
 			\item $ VIF_j = \dfrac{1}{1 - R_j^2} $.\\It measures the correlation between the covariate $ x_j $ with the other covariates. The greater is $ R^2_j \in [0,1]$ the greater is $ VIF_j $. An empiric alert for variance is when $ VIF_j > 10 $
 			\item The ridge regression add a penalty term $ \lambda $ to the linear regression. The $ \mathbf{PLS(\beta) = (y - X \beta)'(y - X \beta) + \lambda \beta' \beta} $.\\The ridge regression is biased respect to linear regression:\\
 			$ E_{LS}(\hat{\beta}) = \mathbf{(X'X)^{-1} X'X \beta = \beta} $\\
@@ -76,4 +99,6 @@
 			$ \hat{\beta}_{PLS} =  \mathbf{(X'X + \lambda K)^{-1}X'X \beta_{LS}}   $\\
 			The covariance matrix of $ \hat{\beta}_{PLS} $ for the same reason is lower than variance of $ \hat{\beta}_{LS} $ so in some cases can be convenient use a ridge regression when the bias error is less relevant than variance error 
 	\end{enumerate}
+	\subsection*{Stata code}
+	\lstinputlisting{stata_ex.do}
 \end{document}
