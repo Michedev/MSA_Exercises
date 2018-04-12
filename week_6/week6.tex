@@ -1,0 +1,20 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Michele De Vita}
+\title{Week 6 exercises}
+\begin{document}
+	\maketitle
+	\begin{enumerate}
+		\item The linear probability model for binary response is simply $ P(y = 1) =   \pi_i = \mathbf{x_i'\beta} = \beta_{0i} + 
+		\beta_{1i} x_{1i}  + \dots + \beta_{ni} x_{ni}   $ and require the restriction that $ 0  \leq  \mathbf{X'\beta}  \leq 1 $ 
+		\item In the GLM we combine the probability output to the linear prediction through a function \textit{h} called \textit{response function} that it is a cumulative distribution function with co domain in [0,1]. In formula we can express the GLM as $$ P(y = 1) =   \pi_i = h(\eta_i) = h(\mathbf{x_i'\beta}) = h(\beta_{0i} + 
+		\beta_{1i} x_{1i}  + \dots + \beta_{ni} x_{ni})  $$\\$ g = h^{-1} $ is the \textit{link function} and it is used to calculate the linear predictor in function of probability: $ \eta_i = g(\pi_i) $ 
+		The logit model use as response function the logistic function: $$ \pi = h(\eta) = \dfrac{e^\eta}{1 + e^\eta} $$. The linear predictor returns the log odds $$ \mathbf{x_i'\beta} = \beta_{0i} + 
+		\beta_{1i} x_{1i}  + \dots + \beta_{ni} x_{ni} =  \pi_i = \log\left(\dfrac{\pi}{1 - \pi}\right)   $$.
+		The probit model use instead a normal distribution cumulative function.
+	\end{enumerate}
+\end{document}
